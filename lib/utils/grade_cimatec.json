@@ -1,0 +1,294 @@
+{
+  "semestre": {
+    "1": [
+      {
+        "disciplina": "Cálculo A",
+        "carga": 60
+      },
+      {
+        "disciplina": "Introdução à Engenharia de Computação",
+        "carga": 30
+      },
+      {
+        "disciplina": "Introdução à Lógica de Programação",
+        "carga": 60
+      },
+      {
+        "disciplina": "Metodologia da Pesquisa",
+        "carga": 30
+      },
+      {
+        "disciplina": "Meio Ambiente e Sustentabilidade",
+        "carga": 30
+      },
+      {
+        "disciplina": "Geometria Analítica",
+        "carga": 30
+      },
+      {
+        "disciplina": "Sistemas Digitais",
+        "carga": 60
+      },
+      {
+        "disciplina": "Relações Humanas no Trabalho",
+        "carga": 30
+      },
+      {
+        "disciplina": "Fundamentos de Estatística",
+        "carga": 60
+      }
+    ],
+    "2": [
+      {
+        "disciplina": "Cálculo B",
+        "carga": 60
+      },
+      {
+        "disciplina": "Física A",
+        "carga": 60
+      },
+      {
+        "disciplina": "Física A Prática",
+        "carga": 30
+      },
+      {
+        "disciplina": "Teoria da Computação",
+        "carga": 60
+      },
+      {
+        "disciplina": "Interação Humano Máquina",
+        "carga": 60
+      },
+      {
+        "disciplina": "Álgebra Linear",
+        "carga": 60
+      },
+      {
+        "disciplina": "Algoritmos e Estrutura de Dados I",
+        "carga": 60
+      },
+      {
+        "disciplina": "Fundamentos de Administração",
+        "carga": 30
+      }
+    ],
+    "3": [
+      {
+        "disciplina": "Cálculo C",
+        "carga": 60
+      },
+      {
+        "disciplina": "Física B",
+        "carga": 60
+      },
+      {
+        "disciplina": "Física B Prática",
+        "carga": 30
+      },
+      {
+        "disciplina": "Banco de Dados I",
+        "carga": 60
+      },
+      {
+        "disciplina": "Linguagem de Programação I",
+        "carga": 60
+      },
+      {
+        "disciplina": "Higiene e Segurança no Trabalho",
+        "carga": 30
+      },
+      {
+        "disciplina": "Algoritimos e Estrutura de Dados II",
+        "carga": 60
+      },
+      {
+        "disciplina": "Gestão de Projetos",
+        "carga": 30
+      }
+    ],
+    "4": [
+      {
+        "disciplina": "Circuitos Elétricos I",
+        "carga": 60
+      },
+      {
+        "disciplina": "Física C",
+        "carga": 60
+      },
+      {
+        "disciplina": "Física C Prática",
+        "carga": 30
+      },
+      {
+        "disciplina": "Banco de Dados II",
+        "carga": 60
+      },
+      {
+        "disciplina": "Linguagem de Programação II",
+        "carga": 60
+      },
+      {
+        "disciplina": "Arquitetura e Organização de Computadores I",
+        "carga": 60
+      },
+      {
+        "disciplina": "Engenharia de Software I",
+        "carga": 60
+      }
+    ],
+    "5": [
+      {
+        "disciplina": "Linguagem de Programação III",
+        "carga": 60
+      },
+      {
+        "disciplina": "Sinais e Sistemas I",
+        "carga": 60
+      },
+      {
+        "disciplina": "Engenharia de Software II",
+        "carga": 60
+      },
+      {
+        "disciplina": "Princípios de Eletrônica Analógica",
+        "carga": 60
+      },
+      {
+        "disciplina": "Sistemas Microprocessados I",
+        "carga": 60
+      },
+      {
+        "disciplina": "Desenvolvimento de Aplicativos Móveis",
+        "carga": 60
+      }
+    ],
+    "6": [
+      {
+        "disciplina": "Sistemas Operacionais",
+        "carga": 60
+      },
+      {
+        "disciplina": "Sinais e Sistemas II",
+        "carga": 60
+      },
+      {
+        "disciplina": "Redes de Computadores I",
+        "carga": 60
+      },
+      {
+        "disciplina": "Arquitetura e Organização de Computadores II",
+        "carga": 60
+      },
+      {
+        "disciplina": "Teoria dos Grafos",
+        "carga": 60
+      }
+    ],
+    "7": [
+      {
+        "disciplina": "Modelagem e Construção de Sistemas I",
+        "carga": 60
+      },
+      {
+        "disciplina": "Computadores",
+        "carga": 60
+      },
+      {
+        "disciplina": "Redes de Computadores II",
+        "carga": 60
+      },
+      {
+        "disciplina": "Sistemas Distribuídos",
+        "carga": 60
+      },
+      {
+        "disciplina": "Fundamentos de Programação de Sistemas",
+        "carga": 30
+      }
+    ],
+    "8": [
+      {
+        "disciplina": "Métodos Computacionais Iterativos",
+        "carga": 60
+      },
+      {
+        "disciplina": "Tópicos Avançados em Engenharia de Software",
+        "carga": 60
+      },
+      {
+        "disciplina": "Redes de Computadores III",
+        "carga": 60
+      },
+      {
+        "disciplina": "Fundamentos de Programação Paralela",
+        "carga": 30
+      },
+      {
+        "disciplina": "Tópicos Avançados em Banco de Dados",
+        "carga": 60
+      }
+    ],
+    "9": [
+      {
+        "disciplina": "Robótica Industrial",
+        "carga": 60
+      },
+      {
+        "disciplina": "Dispositivos Lógicos Programáveis",
+        "carga": 60
+      },
+      {
+        "disciplina": "Inteligência Computacional",
+        "carga": 60
+      },
+      {
+        "disciplina": "Economia",
+        "carga": 30
+      },
+      {
+        "disciplina": "Processamento Digital de Sinais",
+        "carga": 60
+      }
+    ],
+    "10": [
+      {
+        "disciplina": "Visão Computacional",
+        "carga": 60
+      },
+      {
+        "disciplina": "Tópicos Avançados em Inteligência Computacional",
+        "carga": 60
+      },
+      {
+        "disciplina": "Fundamentos de Robótica Móvel",
+        "carga": 30
+      },
+      {
+        "disciplina": "Redes Industriais",
+        "carga": 60
+      },
+      {
+        "disciplina": "Padrões e Projeto de Sistemas",
+        "carga": 60
+      }
+    ]
+  },
+  "desafios": [
+    {
+      "nome": "Desafio Empreendedor",
+      "carga": 15
+    },
+    {
+      "nome": "Desafio Técnico-Gestor",
+      "carga": 15
+    },
+    {
+      "nome": "Desafio Pesquisador",
+      "carga": 15
+    },
+    {
+      "nome": "Desafio de Engenharia de Computação",
+      "carga": 15
+    }
+  ]
+}
