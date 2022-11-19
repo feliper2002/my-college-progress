@@ -17,11 +17,37 @@ class _CourcePageState extends State<CourcePage> {
     super.initState();
   }
 
+  Map<String, Color> colors = {
+    "1": Colors.pink[100]!,
+    "2": Colors.pink[200]!,
+    "3": Colors.pink[300]!,
+    "4": Colors.pink[400]!,
+    "5": Colors.pinkAccent,
+    "6": Colors.purple[100]!,
+    "7": Colors.purple[200]!,
+    "8": Colors.purple[300]!,
+    "9": Colors.purple[400]!,
+    "10": Colors.purple[500]!,
+    "11": Colors.purple[600]!,
+    "12": Colors.purpleAccent,
+  };
+
   @override
   Widget build(BuildContext context) {
     final controller = context.watch<CourseController>();
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: colors["1"],
+      appBar: AppBar(
+        title: const Text("Grade Eng. Computação"),
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search),
+          ),
+        ],
+      ),
       body: ValueListenableBuilder(
         valueListenable: controller,
         builder: ((context, value, child) {
@@ -41,7 +67,9 @@ class _CourcePageState extends State<CourcePage> {
                   final course = value.courses[index];
                   return ListTile(
                     title: Text(course.name),
+                    tileColor: colors["${course.semester}"],
                     subtitle: Text("${course.hours} horas"),
+                    onTap: () {},
                   );
                 },
               );

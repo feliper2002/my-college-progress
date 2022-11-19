@@ -15,7 +15,16 @@ class GetAllCoursesRepositoryImpl implements GetAllCoursesRepository {
   FutureCourse<List<Course>> getAllCourses() async {
     try {
       final data = await datasource.getAllCourses();
-      final courses = Semester.fromMap(data).courses;
+
+      List<Course> courses = [];
+
+      final semestre = data['semestre'] as List;
+      final semestres = semestre.map((s) => Semester.fromMap(s)).toList();
+
+      for (var s in semestres) {
+        courses.addAll(s.courses);
+      }
+
       return Right(courses);
     } on CourseDataFetchFailure catch (_) {
       throw Left(CourseDataRetrieveFailure());

@@ -14,8 +14,6 @@ class GetAllCoursesDatasourceImpl implements GetAllCoursesDatasource {
           await rootBundle.loadString('lib/utils/grade_cimatec.json');
 
       final json = jsonDecode(response);
-      print(json);
-
       return json;
     } on FormatException catch (e) {
       throw CourseDataFetchFailure(e.message);
