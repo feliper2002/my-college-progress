@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_college_progress/modules/courses/presenter/course_page.dart';
+import 'package:my_college_progress/modules/courses/providers/course_providers.dart';
 import 'package:provider/provider.dart';
 
-import '../modules/courses/domain/usecases/get_all_courses.dart';
-import '../modules/courses/external/datasource/get_all_courses_datasource_impl.dart';
-import '../modules/courses/infra/repositories/get_all_courses_repository_impl.dart';
 import '../modules/courses/presenter/controllers/course_controller.dart';
 
 class AppWidget extends StatelessWidget {
@@ -15,8 +13,10 @@ class AppWidget extends StatelessWidget {
     return MultiProvider(
       providers: [
         ListenableProvider(
-            create: (_) => CourseController(GetAllCoursesImpl(
-                GetAllCoursesRepositoryImpl(GetAllCoursesDatasourceImpl())))),
+            create: (_) => CourseController(
+                  getAllCoursesProvider,
+                  updateCourseStatusProvider,
+                )),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
