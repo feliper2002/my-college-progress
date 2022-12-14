@@ -1,15 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:my_college_progress/modules/courses/domain/usecases/get_all_courses.dart';
+import 'package:my_college_progress/modules/courses/domain/usecases/insert_all_courses.dart';
 import 'package:my_college_progress/modules/courses/domain/usecases/update_course_status.dart';
 import 'package:my_college_progress/modules/courses/presenter/controllers/states/course_states.dart';
 
 class CourseController extends ValueNotifier<CourseState> {
-  CourseController(this._getAllCoursesUsecase, this._updateCourseStatusUsecase)
+  CourseController(this._getAllCoursesUsecase, this._insertAllCoursesUsecase,
+      this._updateCourseStatusUsecase)
       : super(InitialCourseState());
 
   final GetAllCourses _getAllCoursesUsecase;
 
   /// [SQFlite Database]
+  final InsertAllCourses _insertAllCoursesUsecase;
   final UpdateCourseStatus _updateCourseStatusUsecase;
 
   Future<void> getAllCourses() async {
@@ -21,6 +24,18 @@ class CourseController extends ValueNotifier<CourseState> {
       value = ErrorCourseState();
     }, (courses) {
       value = SucessGetAllCoursesState(courses);
+    });
+  }
+
+  Future<void> insertAllCourses() async {
+    final usecase = await _insertAllCoursesUsecase();
+
+    value = LoadingCourseState();
+
+    usecase.fold((failure) {
+      value = ErrorCourseState();
+    }, (_) async {
+      value = SuccessCourseInsertState();
     });
   }
 
