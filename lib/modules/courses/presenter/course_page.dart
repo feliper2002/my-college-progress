@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_college_progress/modules/courses/presenter/controllers/course_controller.dart';
 import 'package:my_college_progress/modules/courses/presenter/controllers/states/course_states.dart';
-import 'package:my_college_progress/modules/courses/providers/course_providers.dart';
 import 'package:provider/provider.dart';
 
 class CourcePage extends StatefulWidget {

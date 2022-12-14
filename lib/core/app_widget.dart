@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_college_progress/modules/courses/presenter/course_page.dart';
+import 'package:my_college_progress/modules/courses/presenter/splash_page.dart';
 import 'package:my_college_progress/modules/courses/providers/course_providers.dart';
 import 'package:provider/provider.dart';
 
@@ -15,6 +16,7 @@ class AppWidget extends StatelessWidget {
         ListenableProvider(
             create: (_) => CourseController(
                   getAllCoursesProvider,
+                  insertAllCoursesProvider,
                   updateCourseStatusProvider,
                 )),
       ],
@@ -22,7 +24,8 @@ class AppWidget extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
         routes: {
-          '/': (context) => const CourcePage(),
+          '/': (context) => const SplashPage(),
+          '/courses': (context) => const CourcePage(),
         },
       ),
     );

@@ -6,6 +6,8 @@ class InitialCourseState extends CourseState {}
 
 class LoadingCourseState extends CourseState {}
 
+class SuccessCourseInsertState extends CourseState {}
+
 class SuccessCourseUpdateState extends CourseState {}
 
 class SucessGetAllCoursesState extends CourseState {
