@@ -7,3 +7,15 @@ class CourseDataFetchFailure extends CourseFailure {
 
   CourseDataFetchFailure(this.message);
 }
+
+class CourseDatabaseFailure extends CourseFailure {
+  final String message;
+
+  CourseDatabaseFailure(this.message);
+}
+
+class CourseUsecaseFailure extends CourseFailure {
+  final String message;
+
+  CourseUsecaseFailure(this.message);
+}

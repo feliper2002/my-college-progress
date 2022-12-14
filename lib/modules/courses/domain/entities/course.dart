@@ -14,6 +14,7 @@ class Course {
     return {
       'disciplina': name,
       'carga': hours,
+      'semestre': semester,
     };
   }
 
