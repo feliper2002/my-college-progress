@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_college_progress/modules/courses/presenter/controllers/course_controller.dart';
 import 'package:my_college_progress/modules/courses/presenter/controllers/states/course_states.dart';
+import 'package:my_college_progress/modules/courses/presenter/selected_course_page.dart';
 import 'package:provider/provider.dart';
 
 class CourcePage extends StatefulWidget {
@@ -14,7 +15,6 @@ class _CourcePageState extends State<CourcePage> {
   @override
   void initState() {
     context.read<CourseController>().getAllCourses();
-    // context.read<CourseController>().getCoursesDataFromDB();
     super.initState();
   }
 
@@ -70,7 +70,16 @@ class _CourcePageState extends State<CourcePage> {
                     title: Text(course.name),
                     tileColor: colors["${course.semester}"],
                     subtitle: Text("${course.hours} horas"),
-                    onTap: () {},
+                    onTap: () async {
+                      await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => SelectedCoursePage(
+                                  name: course.name,
+                                  semestre: course.semester,
+                                  backgroundColor:
+                                      colors["${course.semester}"])));
+                    },
                   );
                 },
               );
