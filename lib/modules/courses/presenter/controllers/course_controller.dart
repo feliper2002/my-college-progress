@@ -28,7 +28,9 @@ class CourseController extends ValueNotifier<CourseState> {
       value = ErrorCourseState();
     }, (courses) {
       final cursos = courses
-          .where((element) => element.name.contains(courseTextController.text))
+          .where((element) => element.name
+              .toLowerCase()
+              .contains(courseTextController.text.toLowerCase()))
           .toList();
       if (cursos.isEmpty) {
         value = SucessGetAllCoursesState(courses);

@@ -53,7 +53,9 @@ class _CourcePageState extends State<CourcePage> {
             autofocus: true,
             onFieldSubmitted: (_) {
               setState(() {
-                visibleSearch = !visibleSearch;
+                if (controller.courseTextController.text.isEmpty) {
+                  visibleSearch = !visibleSearch;
+                }
               });
             },
           ),
@@ -66,6 +68,7 @@ class _CourcePageState extends State<CourcePage> {
             onPressed: () {
               setState(() {
                 visibleSearch = !visibleSearch;
+                controller.courseTextController.clear();
               });
             },
             icon: Icon(!visibleSearch ? Icons.search : Icons.close),
