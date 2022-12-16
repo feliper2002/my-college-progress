@@ -15,7 +15,7 @@ class UpdateCourseStatusDatasourceImpl implements UpdateCourseStatusDatasource {
     String query = "UPDATE CURSO SET CONCLUIU = ? WHERE NOME = ?";
 
     try {
-      await db.rawUpdate(query, [name, status]);
+      await db.rawUpdate(query, [int.parse(status), name]);
     } on DatabaseException catch (e) {
       throw CourseDatabaseFailure(e.result.toString());
     }
