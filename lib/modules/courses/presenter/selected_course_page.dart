@@ -51,10 +51,14 @@ class _SelectedCoursePageState extends State<SelectedCoursePage> {
                   String status = "";
                   switch (value.course.concluiu) {
                     case 0:
+                      status = "Não fiz";
+                      break;
+                    case 1:
                       status = "Cursando";
                       break;
                     default:
                       status = "Concluído";
+                      break;
                   }
                   child = Center(
                     child: Column(
@@ -93,10 +97,14 @@ class _SelectedCoursePageState extends State<SelectedCoursePage> {
                           items: const [
                             DropdownMenuItem(
                               value: "0",
-                              child: Text("Cursando"),
+                              child: Text("Não fiz"),
                             ),
                             DropdownMenuItem(
                               value: "1",
+                              child: Text("Cursando"),
+                            ),
+                            DropdownMenuItem(
+                              value: "2",
                               child: Text("Concluído"),
                             ),
                           ],

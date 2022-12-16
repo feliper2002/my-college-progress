@@ -17,6 +17,8 @@ class CourseController extends ValueNotifier<CourseState> {
   final InsertAllCourses _insertAllCoursesUsecase;
   final UpdateCourseStatus _updateCourseStatusUsecase;
 
+  final courseTextController = TextEditingController();
+
   Future<void> getAllCourses() async {
     final usecase = await _getAllCoursesUsecase();
 
@@ -25,7 +27,16 @@ class CourseController extends ValueNotifier<CourseState> {
     usecase.fold((failure) {
       value = ErrorCourseState();
     }, (courses) {
-      value = SucessGetAllCoursesState(courses);
+      final cursos = courses
+          .where((element) => element.name
+              .toLowerCase()
+              .contains(courseTextController.text.toLowerCase()))
+          .toList();
+      if (cursos.isEmpty) {
+        value = SucessGetAllCoursesState(courses);
+      } else {
+        value = SucessGetAllCoursesState(cursos);
+      }
     });
   }
 

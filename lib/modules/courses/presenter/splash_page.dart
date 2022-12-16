@@ -14,17 +14,26 @@ class _SplashPageState extends State<SplashPage> {
   AppDatabase database = AppDatabase();
   late int cursoList;
 
+  navToCourses() async {
+    await Future.delayed(const Duration(milliseconds: 200), () async {
+      await Navigator.pushNamedAndRemoveUntil(
+          context, '/courses', (route) => false);
+    });
+  }
+
   @override
   void initState() {
     database.connect().then((value) {
-      value.query("CURSO").then((list) {
+      value.query("CURSO").then((list) async {
         if (list.isEmpty) {
-          context.read<CourseController>().insertAllCourses();
-        } else {
-          Future.delayed(const Duration(milliseconds: 200), () async {
-            await Navigator.pushNamedAndRemoveUntil(
-                context, '/courses', (route) => false);
+          context
+              .read<CourseController>()
+              .insertAllCourses()
+              .then((value) async {
+            await navToCourses();
           });
+        } else {
+          await navToCourses();
         }
       });
     });

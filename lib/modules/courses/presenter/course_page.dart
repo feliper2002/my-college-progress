@@ -15,6 +15,9 @@ class _CourcePageState extends State<CourcePage> {
   @override
   void initState() {
     context.read<CourseController>().getAllCourses();
+    context.read<CourseController>().courseTextController.addListener(() {
+      context.read<CourseController>().getAllCourses();
+    });
     super.initState();
   }
 
@@ -33,21 +36,42 @@ class _CourcePageState extends State<CourcePage> {
     "12": Colors.purpleAccent,
   };
 
+  bool visibleSearch = false;
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final controller = context.watch<CourseController>();
     return Scaffold(
-      drawer: Container(),
+      drawer: !visibleSearch ? Container() : null,
       backgroundColor: colors["1"],
       appBar: AppBar(
-        title: const Text("Grade Eng. Computação"),
+        title: Visibility(
+          visible: !visibleSearch,
+          replacement: TextFormField(
+            controller: controller.courseTextController,
+            autofocus: true,
+            onFieldSubmitted: (_) {
+              setState(() {
+                if (controller.courseTextController.text.isEmpty) {
+                  visibleSearch = !visibleSearch;
+                }
+              });
+            },
+          ),
+          child: const Text("Grade Eng. Computação"),
+        ),
         elevation: 0,
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
+            onPressed: () {
+              setState(() {
+                visibleSearch = !visibleSearch;
+                controller.courseTextController.clear();
+              });
+            },
+            icon: Icon(!visibleSearch ? Icons.search : Icons.close),
           ),
         ],
       ),
