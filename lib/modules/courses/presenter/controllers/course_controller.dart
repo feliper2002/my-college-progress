@@ -62,7 +62,7 @@ class CourseController extends ValueNotifier<CourseState> {
       value = ErrorCourseState();
     }, (_) async {
       value = SuccessCourseUpdateState();
-      await getAllCourses();
+      await selectCourse(name);
     });
   }
 }

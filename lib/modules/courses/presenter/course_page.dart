@@ -35,8 +35,10 @@ class _CourcePageState extends State<CourcePage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final controller = context.watch<CourseController>();
     return Scaffold(
+      drawer: Container(),
       backgroundColor: colors["1"],
       appBar: AppBar(
         title: const Text("Grade Eng. Computação"),

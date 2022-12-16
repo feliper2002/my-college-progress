@@ -57,33 +57,56 @@ class _SelectedCoursePageState extends State<SelectedCoursePage> {
                       status = "Concluído";
                   }
                   child = Center(
-                    child: Container(
-                      margin: const EdgeInsets.only(top: 30),
-                      alignment: Alignment.center,
-                      height: size.height * .2,
-                      width: size.width * .8,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Disciplina do ${widget.semestre}º semestre",
-                            style: TextStyle(
-                              fontSize: size.height * .024,
-                            ),
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 30),
+                          alignment: Alignment.center,
+                          height: size.height * .2,
+                          width: size.width * .8,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          const SizedBox(height: 20),
-                          Text(
-                            "STATUS: $status",
-                            style: TextStyle(
-                              fontSize: size.height * .024,
-                            ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "Disciplina do ${widget.semestre}º semestre",
+                                style: TextStyle(
+                                  fontSize: size.height * .024,
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+                              Text(
+                                "STATUS: $status",
+                                style: TextStyle(
+                                  fontSize: size.height * .024,
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: 30),
+                        DropdownButton<String>(
+                          value: "${value.course.concluiu}",
+                          items: const [
+                            DropdownMenuItem(
+                              value: "0",
+                              child: Text("Cursando"),
+                            ),
+                            DropdownMenuItem(
+                              value: "1",
+                              child: Text("Concluído"),
+                            ),
+                          ],
+                          onChanged: (valor) async {
+                            await context
+                                .read<CourseController>()
+                                .updateCourseStatus(widget.name, "$valor");
+                          },
+                        ),
+                      ],
                     ),
                   );
                 }
