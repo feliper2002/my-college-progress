@@ -72,7 +72,7 @@ INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Redes de Computadores I", 0
 INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Arquitetura e Organização de Computadores II", 0, 6);
 INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Teoria dos Grafos", 0, 6);
 INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Modelagem e Construção de Sistemas I", 0, 7);
-INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Computadores", 0, 7);
+INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Compiladores", 0, 7);
 INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Redes de Computadores II", 0, 7);
 INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Sistemas Distribuídos", 0, 7);
 INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Fundamentos de Programação de Sistemas", 0, 7);
