@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:my_college_progress/modules/courses/presenter/controllers/course_controller.dart';
 import 'package:my_college_progress/modules/courses/presenter/controllers/states/course_states.dart';
-import 'package:my_college_progress/modules/courses/presenter/selected_course_page.dart';
+import 'package:my_college_progress/modules/courses/presenter/pages/selected_course_page.dart';
 import 'package:provider/provider.dart';
 
-class CourcePage extends StatefulWidget {
-  const CourcePage({super.key});
+class CoursePage extends StatefulWidget {
+  const CoursePage({super.key});
 
   @override
-  State<CourcePage> createState() => _CourcePageState();
+  State<CoursePage> createState() => _CoursePageState();
 }
 
-class _CourcePageState extends State<CourcePage> {
+class _CoursePageState extends State<CoursePage> {
   @override
   void initState() {
-    context.read<CourseController>().getAllCourses();
-    context.read<CourseController>().courseTextController.addListener(() {
+    if (mounted) {
       context.read<CourseController>().getAllCourses();
-    });
+      context.read<CourseController>().courseTextController.addListener(() {
+        context.read<CourseController>().getAllCourses();
+      });
+    }
     super.initState();
   }
 
@@ -36,45 +38,11 @@ class _CourcePageState extends State<CourcePage> {
     "12": Colors.purpleAccent,
   };
 
-  bool visibleSearch = false;
-
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final controller = context.watch<CourseController>();
     return Scaffold(
-      drawer: !visibleSearch ? Container() : null,
       backgroundColor: colors["1"],
-      appBar: AppBar(
-        title: Visibility(
-          visible: !visibleSearch,
-          replacement: TextFormField(
-            controller: controller.courseTextController,
-            autofocus: true,
-            onFieldSubmitted: (_) {
-              setState(() {
-                if (controller.courseTextController.text.isEmpty) {
-                  visibleSearch = !visibleSearch;
-                }
-              });
-            },
-          ),
-          child: const Text("Grade Eng. Computação"),
-        ),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-            onPressed: () {
-              setState(() {
-                visibleSearch = !visibleSearch;
-                controller.courseTextController.clear();
-              });
-            },
-            icon: Icon(!visibleSearch ? Icons.search : Icons.close),
-          ),
-        ],
-      ),
       body: ValueListenableBuilder(
         valueListenable: controller,
         builder: ((context, value, child) {
