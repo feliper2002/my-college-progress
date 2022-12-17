@@ -90,6 +90,6 @@ INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Visão Computacional", 0, 1
 INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Tópicos Avançados em Inteligência Computacional", 0, 10);
 INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Fundamentos de Robótica Móvel", 0, 10);
 INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Redes Industriais", 0, 10);
-INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Padrões e Projeto de Sistemas", 0, 10);
+INSERT INTO CURSO(nome, concluiu, semestre) VALUES ("Padrões e Projeto de Sistemas", 0, 10)
 ''';
 }

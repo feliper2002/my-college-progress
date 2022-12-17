@@ -3,6 +3,8 @@ import 'package:my_college_progress/modules/courses/domain/repositories/update_c
 import 'package:my_college_progress/modules/courses/infra/course_types.dart';
 import 'package:my_college_progress/modules/courses/infra/datasources/update_course_status_datasource.dart';
 
+import '../course_errors.dart';
+
 class UpdateCourseStatusRepositoryImpl implements UpdateCourseRepository {
   final UpdateCourseStatusDatasource datasource;
 
@@ -13,8 +15,10 @@ class UpdateCourseStatusRepositoryImpl implements UpdateCourseRepository {
     try {
       final data = await datasource.updateCourseStatus(name, status);
       return Right(data);
+    } on CourseDatabaseFailure catch (e) {
+      throw Left(CourseDataRetrieveFailure(e.message));
     } catch (e) {
-      throw UnimplementedError();
+      throw Left(CourseDataRetrieveFailure(e.toString()));
     }
   }
 }

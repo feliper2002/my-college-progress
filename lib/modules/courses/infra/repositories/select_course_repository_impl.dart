@@ -4,6 +4,8 @@ import 'package:my_college_progress/modules/courses/domain/repositories/select_c
 import 'package:my_college_progress/modules/courses/infra/course_types.dart';
 import 'package:my_college_progress/modules/courses/infra/datasources/select_course_datasource.dart';
 
+import '../course_errors.dart';
+
 class SelectCourseRepositoryImpl implements SelectCourseRepository {
   final SelectCourseDatasource datasource;
 
@@ -15,8 +17,10 @@ class SelectCourseRepositoryImpl implements SelectCourseRepository {
       final data = await datasource.selectCourse(name);
       final model = CourseDB.fromMap(data);
       return Right(model);
+    } on CourseDatabaseFailure catch (e) {
+      throw Left(CourseDataRetrieveFailure(e.message));
     } catch (e) {
-      throw UnimplementedError();
+      throw Left(CourseDataRetrieveFailure(e.toString()));
     }
   }
 }

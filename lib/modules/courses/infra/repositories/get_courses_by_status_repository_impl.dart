@@ -20,10 +20,10 @@ class GetCoursesByStatusRepositoryImpl implements GetCoursesByStatusRepository {
       courses = data.map((e) => CourseDB.fromMap(e)).toList();
 
       return Right(courses);
-    } on CourseDataFetchFailure catch (_) {
-      throw Left(CourseDataRetrieveFailure());
-    } catch (_) {
-      throw Left(CourseDataRetrieveFailure());
+    } on CourseDatabaseFailure catch (e) {
+      throw Left(CourseDataRetrieveFailure(e.message));
+    } catch (e) {
+      throw Left(CourseDataRetrieveFailure(e.toString()));
     }
   }
 }

@@ -11,7 +11,7 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  AppDatabase database = AppDatabase();
+  late AppDatabase database;
   late int cursoList;
 
   navToCourses() async {
@@ -23,19 +23,16 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    database.connect().then((value) {
-      value.query("CURSO").then((list) async {
+    database = AppDatabase();
+    database.connect().then((value) async {
+      await value.query("CURSO").then((list) async {
         if (list.isEmpty) {
-          context
-              .read<CourseController>()
-              .insertAllCourses()
-              .then((value) async {
-            await navToCourses();
-          });
+          context.read<CourseController>().insertAllCourses();
         } else {
           await navToCourses();
         }
       });
+      await navToCourses();
     });
     super.initState();
   }

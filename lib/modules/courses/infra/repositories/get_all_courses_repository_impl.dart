@@ -26,10 +26,10 @@ class GetAllCoursesRepositoryImpl implements GetAllCoursesRepository {
       }
 
       return Right(courses);
-    } on CourseDataFetchFailure catch (_) {
-      throw Left(CourseDataRetrieveFailure());
-    } catch (_) {
-      throw Left(CourseDataRetrieveFailure());
+    } on CourseDataFetchFailure catch (e) {
+      throw Left(CourseDataRetrieveFailure(e.message));
+    } catch (e) {
+      throw Left(CourseDataRetrieveFailure(e.toString()));
     }
   }
 }
