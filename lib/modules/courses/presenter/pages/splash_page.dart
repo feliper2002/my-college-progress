@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_college_progress/core/database/app_database.dart';
 import 'package:my_college_progress/modules/courses/presenter/controllers/course_controller.dart';
+import 'package:my_college_progress/modules/courses/presenter/controllers/states/course_states.dart';
 import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
@@ -12,7 +13,6 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   late AppDatabase database;
-  late int cursoList;
 
   navToCourses() async {
     await Future.delayed(const Duration(milliseconds: 200), () async {
@@ -32,7 +32,6 @@ class _SplashPageState extends State<SplashPage> {
           await navToCourses();
         }
       });
-      await navToCourses();
     });
     super.initState();
   }
@@ -41,9 +40,19 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.pink[200],
-      body: const Center(
-        child: CircularProgressIndicator(color: Colors.white),
-      ),
+      body: ValueListenableBuilder(
+          valueListenable: context.read<CourseController>(),
+          builder: (context, state, child) {
+            if (state is SuccessCourseInsertState) {
+              navToCourses();
+            }
+
+            child = const Center(
+              child: CircularProgressIndicator(color: Colors.white),
+            );
+
+            return child;
+          }),
     );
   }
 }
