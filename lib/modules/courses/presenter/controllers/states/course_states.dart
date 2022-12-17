@@ -23,4 +23,10 @@ class SucessGetAllCoursesState extends CourseState {
   SucessGetAllCoursesState(this.courses);
 }
 
+class SucessGetCoursesByStatusState extends CourseState {
+  final List<CourseDB> courses;
+
+  SucessGetCoursesByStatusState(this.courses);
+}
+
 class ErrorCourseState extends CourseState {}

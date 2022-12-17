@@ -69,6 +69,9 @@ class _CoursePageState extends State<CoursePage> {
                           context,
                           MaterialPageRoute(
                               builder: (_) => SelectedCoursePage(
+                                  executeOnClose: () async {
+                                    await controller.getAllCourses();
+                                  },
                                   name: course.name,
                                   semestre: course.semester,
                                   backgroundColor:

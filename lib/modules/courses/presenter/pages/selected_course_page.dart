@@ -7,11 +7,13 @@ class SelectedCoursePage extends StatefulWidget {
   final int semestre;
   final String name;
   final Color? backgroundColor;
+  final Function executeOnClose;
   const SelectedCoursePage({
     super.key,
     required this.name,
     this.backgroundColor,
     required this.semestre,
+    required this.executeOnClose,
   });
 
   @override
@@ -30,7 +32,7 @@ class _SelectedCoursePageState extends State<SelectedCoursePage> {
     final size = MediaQuery.of(context).size;
     return WillPopScope(
       onWillPop: () async {
-        context.read<CourseController>().getAllCourses();
+        widget.executeOnClose.call();
         return true;
       },
       child: Scaffold(
@@ -51,7 +53,7 @@ class _SelectedCoursePageState extends State<SelectedCoursePage> {
                   String status = "";
                   switch (value.course.concluiu) {
                     case 0:
-                      status = "Não fiz";
+                      status = "Pendente";
                       break;
                     case 1:
                       status = "Cursando";
@@ -97,7 +99,7 @@ class _SelectedCoursePageState extends State<SelectedCoursePage> {
                           items: const [
                             DropdownMenuItem(
                               value: "0",
-                              child: Text("Não fiz"),
+                              child: Text("Pendente"),
                             ),
                             DropdownMenuItem(
                               value: "1",

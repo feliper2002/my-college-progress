@@ -11,8 +11,8 @@ class InsertAllCoursesDatasourceImpl implements InsertAllCoursesDatasource {
 
   @override
   Future<void> insertAllCourses() async {
-    final db = await database.connect();
     try {
+      final db = await database.connect();
       final tableLength = (await db.query('CURSO')).length;
       if (tableLength == 0) {
         final inserts = _script.split(";");
