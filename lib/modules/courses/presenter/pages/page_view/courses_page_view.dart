@@ -28,22 +28,55 @@ class _CoursesPageViewState extends State<CoursesPageView> {
       appBar: AppBar(
         title: Visibility(
           visible: !visibleSearch,
-          replacement: TextFormField(
-            controller: controller.courseTextController,
-            autofocus: true,
-            onFieldSubmitted: (_) {
-              setState(() {
-                if (controller.courseTextController.text.isEmpty) {
-                  visibleSearch = !visibleSearch;
-                }
-              });
-            },
+          replacement: SizedBox(
+            height: 35,
+            child: TextFormField(
+              textAlignVertical: TextAlignVertical.center,
+              maxLines: 1,
+              minLines: 1,
+              controller: controller.courseTextController,
+              autofocus: true,
+              onFieldSubmitted: (_) {
+                setState(() {
+                  if (controller.courseTextController.text.isEmpty) {
+                    visibleSearch = !visibleSearch;
+                  }
+                });
+              },
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.deepPurpleAccent[100],
+                hintText: "Disciplina",
+                hintStyle: const TextStyle(
+                  color: Color.fromARGB(255, 90, 59, 133),
+                  fontSize: 18,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.transparent),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.transparent),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                border: OutlineInputBorder(
+                  borderSide: const BorderSide(color: Colors.transparent),
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+            ),
           ),
           child: const Text("Grade Eng. Computação"),
         ),
         elevation: 0,
         backgroundColor: Colors.transparent,
         actions: [
+          IconButton(
+            onPressed: () {
+              /// Open dialog
+            },
+            icon: const Icon(Icons.info_outline),
+          ),
           IconButton(
             onPressed: () {
               setState(() {
