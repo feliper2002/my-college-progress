@@ -1,14 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:my_college_progress/modules/courses/domain/usecases/get_all_courses.dart';
+import 'package:my_college_progress/modules/courses/domain/usecases/get_courses_by_status.dart';
 import 'package:my_college_progress/modules/courses/domain/usecases/insert_all_courses.dart';
 import 'package:my_college_progress/modules/courses/domain/usecases/select_course.dart';
 import 'package:my_college_progress/modules/courses/domain/usecases/update_course_status.dart';
 import 'package:my_college_progress/modules/courses/presenter/controllers/states/course_states.dart';
 
 class CourseController extends ValueNotifier<CourseState> {
-  CourseController(this._getAllCoursesUsecase, this._selectCourseUsecase,
-      this._insertAllCoursesUsecase, this._updateCourseStatusUsecase)
-      : super(InitialCourseState());
+  CourseController(
+    this._getAllCoursesUsecase,
+    this._selectCourseUsecase,
+    this._insertAllCoursesUsecase,
+    this._updateCourseStatusUsecase,
+    this._getCoursesByStatusUsecase,
+  ) : super(InitialCourseState());
 
   final GetAllCourses _getAllCoursesUsecase;
 
@@ -16,6 +21,7 @@ class CourseController extends ValueNotifier<CourseState> {
   final SelectCourse _selectCourseUsecase;
   final InsertAllCourses _insertAllCoursesUsecase;
   final UpdateCourseStatus _updateCourseStatusUsecase;
+  final GetCoursesByStatus _getCoursesByStatusUsecase;
 
   final courseTextController = TextEditingController();
 
@@ -74,6 +80,18 @@ class CourseController extends ValueNotifier<CourseState> {
     }, (_) async {
       value = SuccessCourseUpdateState();
       await selectCourse(name);
+    });
+  }
+
+  Future<void> getCoursesByStatus(String status) async {
+    final usecase = await _getCoursesByStatusUsecase(status);
+
+    value = LoadingCourseState();
+
+    usecase.fold((failure) {
+      value = ErrorCourseState();
+    }, (courses) async {
+      value = SucessGetCoursesByStatusState(courses);
     });
   }
 }
