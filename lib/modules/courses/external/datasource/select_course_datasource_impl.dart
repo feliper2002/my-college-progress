@@ -1,11 +1,11 @@
-import 'package:my_college_progress/core/database/app_database.dart';
+import 'package:my_college_progress/core/database/database_contract.dart';
 import 'package:my_college_progress/modules/courses/infra/datasources/select_course_datasource.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../infra/course_errors.dart';
 
 class SelectCourseDatasourceImpl implements SelectCourseDatasource {
-  final AppDatabase database;
+  final DatabaseContract database;
 
   SelectCourseDatasourceImpl(this.database);
 
