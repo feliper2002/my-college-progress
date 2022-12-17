@@ -17,6 +17,8 @@ class GetAllCoursesDatasourceImpl implements GetAllCoursesDatasource {
       return json;
     } on FormatException catch (e) {
       throw CourseDataFetchFailure(e.message);
+    } catch (e) {
+      throw CourseDataFetchFailure(e.toString());
     }
   }
 }
