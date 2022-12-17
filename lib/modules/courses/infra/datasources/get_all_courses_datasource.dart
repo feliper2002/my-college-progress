@@ -1,3 +1,3 @@
 abstract class GetAllCoursesDatasource {
-  Future<List<Map<String, dynamic>>> getAllCourses();
+  Future<Map<String, dynamic>> getAllCourses();
 }
