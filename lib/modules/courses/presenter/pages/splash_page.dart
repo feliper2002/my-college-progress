@@ -39,7 +39,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[200],
+      backgroundColor: Colors.deepPurpleAccent,
       body: ValueListenableBuilder(
           valueListenable: context.read<CourseController>(),
           builder: (context, state, child) {
