@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_college_progress/modules/courses/domain/entities/course.dart';
 import 'package:my_college_progress/modules/courses/domain/entities/course_db.dart';
-import 'package:provider/provider.dart';
-
-import '../controllers/course_controller.dart';
 import '../pages/selected_course_page.dart';
 
 class CourseTile extends StatelessWidget {
@@ -18,6 +15,12 @@ class CourseTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: CircleAvatar(
+        radius: 20,
+        backgroundColor: Colors.deepPurpleAccent,
+        child: Text(
+            "${(course != null ? course!.semester : courseDB!.semestre)}º"),
+      ),
       title: Text(
         (course != null ? course!.name : courseDB!.name),
         style: const TextStyle(
