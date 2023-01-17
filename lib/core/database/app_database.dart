@@ -3,7 +3,8 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class AppDatabase implements DatabaseContract {
-  static const path = "gradecimatec.db";
+  static const path = "gradecimatec_2.db";
+  static const dbVersion = 1;
 
   static Future<void> dropDatabase() async {
     await deleteDatabase(join(await getDatabasesPath(), path));
@@ -14,19 +15,20 @@ class AppDatabase implements DatabaseContract {
     final dbpath = await getDatabasesPath();
     return await openDatabase(
       join(dbpath, path),
-      version: 1,
+      version: dbVersion,
       onCreate: (db, version) async {
         await db.execute(
           '''
         CREATE TABLE CURSO(
           nome TEXT primary key not null,
-          concluiu integer not null,
-          semestre integer not null
+          concluiu INTEGER not null,
+          semestre INTEGER not null,
+          nota REAL
           );
         
         CREATE TABLE ALUNO(
           nome TEXT primary key not null,
-          semestre integer not null
+          semestre INTEGER not null
         );
           ''',
         );
