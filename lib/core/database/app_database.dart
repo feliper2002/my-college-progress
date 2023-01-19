@@ -23,7 +23,12 @@ class AppDatabase implements DatabaseContract {
           nome TEXT primary key not null,
           concluiu INTEGER not null,
           semestre INTEGER not null,
-          nota REAL
+          av1 REAL,
+          av2 REAL,
+          av3 REAL,
+          edag REAL,
+          recuperacao REAL,
+          media REAL
           );
         
         CREATE TABLE ALUNO(

@@ -20,6 +20,7 @@ class AppWidget extends StatelessWidget {
                   insertAllCoursesProvider,
                   updateCourseStatusProvider,
                   getCoursesByStatusProvider,
+                  updateCourseGradesProvider,
                 )),
       ],
       child: MaterialApp(
